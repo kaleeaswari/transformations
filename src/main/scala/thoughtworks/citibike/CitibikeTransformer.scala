@@ -1,4 +1,4 @@
-package com.thoughtworks.ca.de.batch.citibike
+package thoughtworks.citibike
 
 import org.apache.log4j.{Level, LogManager}
 import org.apache.spark.sql.SparkSession
@@ -35,7 +35,7 @@ object CitibikeTransformer {
           ingestPath: String,
           outputPath: String): Unit = {
 
-    import com.thoughtworks.ca.de.batch.citibike.CitibikeTransformerUtils._
+    import CitibikeTransformerUtils._
 
     val df = sparkSession.read
       .parquet(ingestPath)

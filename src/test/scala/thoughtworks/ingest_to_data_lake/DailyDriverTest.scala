@@ -1,8 +1,8 @@
-package com.thoughtworks.ca.de.batch.ingest_to_data_lake
+package thoughtworks.ingest_to_data_lake
 
 import java.nio.file.{Files, StandardOpenOption}
 
-import com.thoughtworks.ca.de.DefaultFeatureSpecWithSpark
+import thoughtworks.DefaultFeatureSpecWithSpark
 
 class DailyDriverTest extends DefaultFeatureSpecWithSpark {
 

@@ -23,7 +23,7 @@ sbt package
 ### Running Wordcount
 By default this app will read from the words.txt file and write to the target folder.  Pass in the input source and output path to wordcount different files. 
 ```
-spark-submit --class com.thoughtworks.ca.de.batch.wordcount.WordCount --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar ./src/test/resources/data/words.txt target/test01
+spark-submit --class thoughtworks.batch.wordcount.WordCount --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar ./src/test/resources/data/words.txt target/test01
 ```
 
 ### Running multi-step pipeline
@@ -37,16 +37,16 @@ spark-submit --class com.thoughtworks.ca.de.batch.wordcount.WordCount --master l
 You can run these commands from the transformations directory.
 * Ingest data from external source to datalake: 
 ```
-spark-submit --class com.thoughtworks.ca.de.batch.ingest_to_data_lake.DailyDriver --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar $(INPUT_LOCATION) $(OUTPUT_LOCATION)
+spark-submit --class thoughtworks.batch.ingest_to_data_lake.DailyDriver --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar $(INPUT_LOCATION) $(OUTPUT_LOCATION)
 ```
 * Transform Citibike data: 
 ```
-spark-submit --class com.thoughtworks.ca.de.batch.citibike.CitibikeTransformer --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar $(INPUT_LOCATION) $(OUTPUT_LOCATION)
+spark-submit --class thoughtworks.batch.citibike.CitibikeTransformer --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar $(INPUT_LOCATION) $(OUTPUT_LOCATION)
 ```
 
 * Sample App: 
 Remember to change the configurations in src > main > resources > application.conf before running this command.
 ```
-spark-submit --jars ../config-1.3.2.jar --class com.thoughtworks.ca.de.batch.app.UberRidesByHumidityRange --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar
+spark-submit --jars ../config-1.3.2.jar --class thoughtworks.batch.app.UberRidesByHumidityRange --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar
 ```
 

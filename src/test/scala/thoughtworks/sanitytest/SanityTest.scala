@@ -1,4 +1,4 @@
-package com.thoughtworks.ca.de.batch.sanitytest
+package thoughtworks.sanitytest
 
 import org.scalatest.{FunSuite, Matchers}
 

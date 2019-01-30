@@ -1,4 +1,4 @@
-package com.thoughtworks.ca.de.batch.citibike
+package thoughtworks.citibike
 
 import org.apache.spark.sql.{Dataset, Row, SparkSession}
 

@@ -1,4 +1,4 @@
-package com.thoughtworks.ca.de
+package thoughtworks
 
 import org.apache.spark.sql.SparkSession
 import org.scalatest.{FeatureSpec, GivenWhenThen, Matchers}

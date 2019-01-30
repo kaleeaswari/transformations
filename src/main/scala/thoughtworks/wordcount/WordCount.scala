@@ -1,4 +1,4 @@
-package com.thoughtworks.ca.de.batch.wordcount
+package thoughtworks.wordcount
 
 import java.time.LocalDateTime
 
@@ -27,7 +27,7 @@ object WordCount {
     log.info("Writing csv to directory: " + outputPath)
 
     import spark.implicits._
-    import com.thoughtworks.ca.de.batch.wordcount.WordCountUtils._
+    import WordCountUtils._
     spark
       .read
       .text(inputPath)

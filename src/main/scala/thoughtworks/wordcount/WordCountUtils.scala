@@ -1,4 +1,4 @@
-package com.thoughtworks.ca.de.batch.wordcount
+package thoughtworks.wordcount
 
 import org.apache.spark.sql.{Dataset, SparkSession}
 

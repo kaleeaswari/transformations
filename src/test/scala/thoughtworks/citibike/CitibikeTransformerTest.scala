@@ -1,11 +1,11 @@
-package com.thoughtworks.ca.de.batch.citibike
+package thoughtworks.citibike
 
 import java.nio.file.Files
 
-import com.thoughtworks.ca.de.DefaultFeatureSpecWithSpark
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types.{DoubleType, StructField}
+import thoughtworks.DefaultFeatureSpecWithSpark
 
 class CitibikeTransformerTest extends DefaultFeatureSpecWithSpark {
 

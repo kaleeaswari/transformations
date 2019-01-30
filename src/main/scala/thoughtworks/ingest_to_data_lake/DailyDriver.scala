@@ -1,8 +1,7 @@
-package com.thoughtworks.ca.de.batch.ingest_to_data_lake
+package thoughtworks.ingest_to_data_lake
 
-import com.thoughtworks.ca.de.common.utils.DataframeUtils
 import org.apache.log4j.{Level, LogManager, Logger}
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object DailyDriver {
   val log: Logger = LogManager.getRootLogger
@@ -33,8 +32,18 @@ object DailyDriver {
       .format("org.apache.spark.csv")
       .option("header", value = true)
       .csv(inputSource)
-    DataframeUtils.formatColumnHeaders(inputDataFrame)
+
+    formatColumnHeaders(inputDataFrame)
       .write
       .parquet(outputPath)
+  }
+
+  def formatColumnHeaders(dataFrame: DataFrame): DataFrame = {
+    var retDf = dataFrame
+    for (column <- retDf.columns) {
+      retDf = retDf.withColumnRenamed(column, column.replaceAll("\\s", "_"))
+    }
+    retDf.printSchema()
+    retDf
   }
 }

@@ -1,8 +1,8 @@
-package com.thoughtworks.ca.de.batch.wordcount
+package thoughtworks.wordcount
 
-import com.thoughtworks.ca.de.DefaultFeatureSpecWithSpark
-import com.thoughtworks.ca.de.batch.wordcount.WordCountUtils._
+import WordCountUtils._
 import org.apache.spark.sql.Dataset
+import thoughtworks.DefaultFeatureSpecWithSpark
 
 
 class WordCountUtilsTest extends DefaultFeatureSpecWithSpark {
