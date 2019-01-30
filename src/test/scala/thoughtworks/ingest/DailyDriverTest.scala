@@ -1,4 +1,4 @@
-package thoughtworks.ingest_to_data_lake
+package thoughtworks.ingest
 
 import java.nio.file.{Files, StandardOpenOption}
 

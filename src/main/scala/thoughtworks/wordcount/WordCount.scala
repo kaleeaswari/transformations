@@ -13,7 +13,7 @@ object WordCount {
     val spark = SparkSession.builder.appName("Word Count").getOrCreate()
     log.info("Application Initialized: " + spark.sparkContext.appName)
 
-    val inputPath = if(!args.isEmpty) args(0) else "../sample-data/words.txt"
+    val inputPath = if(!args.isEmpty) args(0) else "./src/test/resources/data/words.txt"
     val outputPath = if(args.length > 1) args(1) else "./target/test-" + LocalDateTime.now()
 
     run(spark, inputPath, outputPath)

@@ -8,10 +8,11 @@ object CitibikeTransformer {
   log.setLevel(Level.INFO)
 
   def main(args: Array[String]): Unit = {
+    val (ingestPath: String, transformationPath: String) = getInputAndOutputPaths(args)
+
     val spark = SparkSession.builder.appName("Citibike Transformer").getOrCreate()
     log.info("Citibike Transformer Application Initialized: " + spark.sparkContext.appName)
 
-    val (ingestPath: String, transformationPath: String) = getInputAndOutputPaths(args, spark)
 
     run(spark, ingestPath, transformationPath)
 
@@ -19,9 +20,8 @@ object CitibikeTransformer {
     spark.stop()
   }
 
-  private def getInputAndOutputPaths(args: Array[String], spark: SparkSession) = {
-    if (args.length < 2) {
-      spark.stop()
+  private def getInputAndOutputPaths(args: Array[String]) = {
+    if (args.length == 2) {
       log.warn("Input source and output path are required")
       System.exit(1)
     }
