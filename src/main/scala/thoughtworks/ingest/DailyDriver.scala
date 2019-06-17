@@ -20,7 +20,7 @@ object DailyDriver {
   }
 
   private def getInputAndOutputPaths(args: Array[String]) = {
-    if (args.length == 2) {
+    if (args.length < 2) {
       log.warn("Input source and output path are required")
       System.exit(1)
     }
