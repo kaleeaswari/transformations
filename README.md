@@ -38,7 +38,7 @@ The application is run in two steps.
 * Then the application will read the parquet files and apply the appropriate transformations.
 
 
-* To ngest data from external source to datalake:
+* To ingest data from external source to datalake:
 ```
 spark-submit --class thoughtworks.ingest.DailyDriver --master local target/scala-2.11/tw-pipeline_2.11-0.1.0-SNAPSHOT.jar $(INPUT_LOCATION) $(OUTPUT_LOCATION)
 ```
