@@ -51,4 +51,4 @@ spark-submit --class thoughtworks.citibike.CitibikeTransformer --master local ta
 Currently this application is a skeleton with ignored tests.  Please unignore the tests and build the Citibike transformation application.
 
 #### Tips
-- For distance calculation, consider using [**Harvesite formula**](https://en.wikipedia.org/wiki/Haversine_formula) as an option.  
+- For distance calculation, consider using [**Harvesine formula**](https://en.wikipedia.org/wiki/Haversine_formula) as an option.  
