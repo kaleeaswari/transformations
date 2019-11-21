@@ -3,14 +3,14 @@ package thoughtworks.wordcount
 import java.time.LocalDateTime
 
 import org.apache.log4j.{Level, LogManager, Logger}
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SparkSession, DataFrame}
 
 object WordCount {
   val log: Logger = LogManager.getRootLogger
   log.setLevel(Level.INFO)
 
   def main(args: Array[String]): Unit = {
-    val spark = SparkSession.builder.appName("Word Count").getOrCreate()
+    val spark = SparkSession.builder.appName("WordCount - Kales").getOrCreate()
     log.info("Application Initialized: " + spark.sparkContext.appName)
 
     val inputPath = if(!args.isEmpty) args(0) else "./src/test/resources/data/words.txt"
@@ -34,7 +34,9 @@ object WordCount {
       .as[String]
       .splitWords(spark)
       .countByWord(spark)
-      .write
-      .csv(outputPath)
+      .collect()
+//      .write
+//      .option("quote","")
+//      .csv(outputPath)
   }
 }

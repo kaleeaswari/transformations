@@ -9,11 +9,9 @@ import thoughtworks.DefaultFeatureSpecWithSpark
 
 class WordCountTest extends DefaultFeatureSpecWithSpark {
   feature("Word Count application") {
-    ignore("Acceptance test for basic use") {
+    scenario("Acceptance test for basic use") {
       Given("A simple input file, a Spark context, and a known output file")
-
       val rootDirectory = Files.createTempDirectory(this.getClass.getName)
-
       val inputFile = Files.createFile(rootDirectory.resolve("input.txt"))
       val outputDirectory = rootDirectory.resolve("output")
       import scala.collection.JavaConverters._
@@ -24,13 +22,10 @@ class WordCountTest extends DefaultFeatureSpecWithSpark {
         "it was the age of foolishness,"
       )
       Files.write(inputFile, lines.asJava, StandardOpenOption.CREATE)
-
       When("I trigger the application")
-
       WordCount.run(spark,
         inputFile.toUri.toString,
         outputDirectory.toUri.toString)
-
       Then("It outputs files containing the expected data")
 
       val files = FileUtils
@@ -59,7 +54,7 @@ class WordCountTest extends DefaultFeatureSpecWithSpark {
       FileUtils.deleteDirectory(rootDirectory.toFile)
     }
 
-    ignore("Acceptance test for advanced use") {
+    scenario("Acceptance test for advanced use") {
       Given("A simple input file, a Spark context, and a known output file")
 
       val rootDirectory = Files.createTempDirectory(this.getClass.getName)
