@@ -34,9 +34,10 @@ object WordCount {
       .as[String]
       .splitWords(spark)
       .countByWord(spark)
-      .collect()
-//      .write
-//      .option("quote","")
-//      .csv(outputPath)
+      //.collect()
+      .coalesce(10)
+      .write
+      .option("quote","")
+      .csv(outputPath)
   }
 }

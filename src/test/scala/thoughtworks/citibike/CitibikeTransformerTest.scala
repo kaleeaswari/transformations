@@ -26,6 +26,7 @@ class CitibikeTransformerTest extends DefaultFeatureSpecWithSpark {
       Given("Ingested data")
 
       val (ingestDir, transformDir) = makeInputAndOutputDirectories("Citibike")
+
       val inputDF = sampleCitibikeData.toDF(citibikeBaseDataColumns: _*)
       inputDF.write.parquet(ingestDir)
 
@@ -44,11 +45,11 @@ class CitibikeTransformerTest extends DefaultFeatureSpecWithSpark {
       newColumns should be(expectedColumns)
 
       val fieldToFieldIgnoringNullable: StructField => StructField = field => StructField(field.name, field.dataType)
-      transformedDF.schema.fields.map(fieldToFieldIgnoringNullable)should contain.allElementsOf(inputDF.schema
+      transformedDF.schema.fields.map(fieldToFieldIgnoringNullable) should contain.allElementsOf(inputDF.schema
         .fields.map(fieldToFieldIgnoringNullable))
     }
 
-    ignore("Citibike Advanced Acceptance Test") {
+    scenario("Citibike Advanced Acceptance Test") {
       val rootDirectory = Files.createTempDirectory(this.getClass.getName + "Citibike")
       val ingestedDir = rootDirectory.resolve("ingest")
       val transformedDir = rootDirectory.resolve("transform")
@@ -83,8 +84,7 @@ class CitibikeTransformerTest extends DefaultFeatureSpecWithSpark {
 
 
   private def makeInputAndOutputDirectories(folderNameSuffix: String): (String, String) = {
-    val rootDirectory =
-      Files.createTempDirectory(this.getClass.getName + folderNameSuffix)
+    val rootDirectory = Files.createTempDirectory(this.getClass.getName + folderNameSuffix)
     val ingestDir = rootDirectory.resolve("ingest")
     val transformDir = rootDirectory.resolve("transform")
     (ingestDir.toUri.toString, transformDir.toUri.toString)

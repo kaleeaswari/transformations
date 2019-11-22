@@ -40,10 +40,6 @@ object CitibikeTransformer {
     val df = sparkSession.read
       .parquet(ingestPath)
       .computeDistances(sparkSession)
-
-    df.show(false)
-
-    df
       .write
       .parquet(outputPath)
   }
