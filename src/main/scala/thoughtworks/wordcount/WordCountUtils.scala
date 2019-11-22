@@ -8,10 +8,8 @@ object WordCountUtils {
   implicit class StringDataset(val dataSet: Dataset[String]) {
     def splitWords(spark: SparkSession) = {
       import spark.implicits._
-      dataSet.map(line => line.toLowerCase().replaceAll("\"", "").trim().split(" |,|;|\\.|-"))
-        .flatMap(word => word)
-        .filter(_.length >= 1 )
-
+      dataSet.map(line => line.toLowerCase().replaceAll("\"", "")
+        .split(" |,|;|\\.|-")).flatMap(word => if (word.length >=1) word else None)
     }
 
     def countByWord(spark: SparkSession) = {
